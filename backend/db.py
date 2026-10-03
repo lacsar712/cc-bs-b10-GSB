@@ -22,6 +22,31 @@ CREATE TABLE IF NOT EXISTS strain_readings (
     processed_at timestamptz
 );
 CREATE INDEX IF NOT EXISTS idx_strain_readings_status ON strain_readings (status, id);
+CREATE TABLE IF NOT EXISTS alert_settings (
+    id smallint PRIMARY KEY CHECK (id = 1),
+    night_start time NOT NULL DEFAULT '22:00',
+    night_end time NOT NULL DEFAULT '06:00',
+    window_minutes integer NOT NULL DEFAULT 60,
+    min_done integer NOT NULL DEFAULT 5,
+    updated_by text,
+    updated_at timestamptz
+);
+CREATE TABLE IF NOT EXISTS alert_state (
+    id smallint PRIMARY KEY CHECK (id = 1),
+    is_active boolean NOT NULL DEFAULT false,
+    checked_at timestamptz
+);
+CREATE TABLE IF NOT EXISTS alert_events (
+    id serial PRIMARY KEY,
+    triggered_at timestamptz NOT NULL DEFAULT now(),
+    night_start time NOT NULL,
+    night_end time NOT NULL,
+    window_minutes integer NOT NULL,
+    done_count integer NOT NULL,
+    min_done integer NOT NULL
+);
+INSERT INTO alert_settings (id) VALUES (1) ON CONFLICT (id) DO NOTHING;
+INSERT INTO alert_state (id) VALUES (1) ON CONFLICT (id) DO NOTHING;
 """
 
 

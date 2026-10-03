@@ -42,6 +42,48 @@ h1 {
   margin-bottom: 1rem;
 }
 
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.topbar-actions .user {
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.badge-dot {
+  display: inline-block;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: #e53935;
+  margin-left: 0.4rem;
+  vertical-align: middle;
+}
+
+.alert-banner {
+  border-radius: 6px;
+  padding: 0.7rem 0.9rem;
+  margin-bottom: 0.6rem;
+  font-size: 0.95rem;
+}
+
+.alert-banner.on {
+  background: #ffebee;
+  color: #b71c1c;
+  border: 1px solid #ef9a9a;
+}
+
+.alert-banner.off {
+  background: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #a5d6a7;
+}
+
 .row {
   display: flex;
   flex-wrap: wrap;
