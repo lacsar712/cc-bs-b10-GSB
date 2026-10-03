@@ -129,3 +129,77 @@ th {
   background: #fff8e1;
   color: #f57f17;
 }
+
+.topnav {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.navbtn {
+  position: relative;
+  background: #e0e4e8;
+  color: #1a1a1a;
+}
+
+.navbtn.active {
+  background: #1565c0;
+  color: #fff;
+}
+
+.dot {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #c62828;
+  border: 1px solid #fff;
+}
+
+.banner {
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.banner.alert {
+  background: #ffebee;
+  border: 1px solid #ef9a9a;
+  color: #b71c1c;
+}
+
+.banner.calm {
+  background: #e8f5e9;
+  border: 1px solid #a5d6a7;
+  color: #2e7d32;
+}
+
+.cardtitle {
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+.kv {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 0.35rem 0.75rem;
+  font-size: 0.9rem;
+  margin: 0 0 0.5rem;
+}
+
+.kv dt {
+  color: #555;
+}
+
+.kv dd {
+  margin: 0;
+}
+
+.hint {
+  color: #555;
+  font-size: 0.85rem;
+  margin: 0.5rem 0 0;
+}

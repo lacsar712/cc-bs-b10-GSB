@@ -22,6 +22,24 @@ CREATE TABLE IF NOT EXISTS strain_readings (
     processed_at timestamptz
 );
 CREATE INDEX IF NOT EXISTS idx_strain_readings_status ON strain_readings (status, id);
+CREATE TABLE IF NOT EXISTS low_sample_config (
+    id smallint PRIMARY KEY,
+    night_start time NOT NULL DEFAULT '22:00',
+    night_end time NOT NULL DEFAULT '06:00',
+    window_minutes integer NOT NULL DEFAULT 60 CHECK (window_minutes > 0),
+    min_done integer NOT NULL DEFAULT 5 CHECK (min_done > 0),
+    alert_active boolean NOT NULL DEFAULT false,
+    CHECK (id = 1)
+);
+CREATE TABLE IF NOT EXISTS low_sample_alerts (
+    id serial PRIMARY KEY,
+    triggered_at timestamptz NOT NULL DEFAULT now(),
+    window_start timestamptz NOT NULL,
+    window_end timestamptz NOT NULL,
+    done_count integer NOT NULL,
+    min_done integer NOT NULL
+);
+INSERT INTO low_sample_config (id) VALUES (1) ON CONFLICT (id) DO NOTHING;
 """
 
 
